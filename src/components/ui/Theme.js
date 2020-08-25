@@ -9,6 +9,7 @@ const arcOrange = '#FFBA60';
 export default createMuiTheme({
   // check default-them in material-ui. We can custermize basic theme here.
   // palette - color
+  // We add reusable stuffs here. ex. estimate is for button. We will use same font, color etc later
   palette: {
     common: {
       arcBlue: `${arcBlue}`,
@@ -28,6 +29,12 @@ export default createMuiTheme({
       textTransform: 'none', //this changes uppercase to normal letters
       fontWeight: '700',
       fontSize: '1rem',
+    },
+    estimate: {
+      fontFamily: 'Pacifico',
+      fontSize: '1rem',
+      textTransform: 'none',
+      color: 'white',
     },
   },
 });
