@@ -12,8 +12,8 @@ export default createMuiTheme({
   // We add reusable stuffs here. ex. estimate is for button. We will use same font, color etc later
   palette: {
     common: {
-      arcBlue: `${arcBlue}`,
-      arcOrange: `${arcOrange}`,
+      blue: `${arcBlue}`,
+      orange: `${arcOrange}`,
     },
     primary: {
       main: `${arcBlue}`,
