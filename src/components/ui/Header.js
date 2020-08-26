@@ -138,26 +138,28 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
+// Props are from App.js
 const Header = (props) => {
   // customersize style
   const classes = useStyles();
 
   // them and matches are for media query
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md')); //md size or below
+  //small size or below - in the lecture, it was md (medium) but due to my screen size, I have changed it to sm
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-  // menu or menu items
-  const [value, setValue] = useState(0);
+  // menu and menu items
+  //* we moved the first two const to App.js. Pass props from App (also can be used to other component)
+  //const [value, setValue] = useState(0);
+  //const [selectedIndex, setSelectedIndex] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
-  //const [open, setOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleChange = (e, newValue) => {
-    setValue(newValue);
+    props.setValue(newValue);
   };
 
   const handleClick = (e) => {
@@ -170,7 +172,7 @@ const Header = (props) => {
     setAnchorEl(null);
     //setOpen(false);
     setOpenMenu(false);
-    setSelectedIndex(i);
+    props.setSelectedIndex(i);
   };
 
   const handleClose = (e) => {
@@ -289,10 +291,13 @@ const Header = (props) => {
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
         case `${route.link}`:
-          if (value !== route.activeIndex) {
-            setValue(route.activeIndex);
-            if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
-              setSelectedIndex(route.selectedIndex);
+          if (props.value !== route.activeIndex) {
+            props.setValue(route.activeIndex);
+            if (
+              route.selectedIndex &&
+              route.selectedIndex !== props.selectedIndex
+            ) {
+              props.setSelectedIndex(route.selectedIndex);
             }
           }
           break;
@@ -300,13 +305,13 @@ const Header = (props) => {
           break;
       }
     });
-  }, [value.menuOptions, selectedIndex, routes]); // useEffect is depending on 'value' whenever value changes, it triggers
+  }, [props.value.menuOptions, props.selectedIndex, routes, props]); // useEffect is depending on 'value' whenever value changes, it triggers
 
   const tabs = (
     <>
       {/* refactor as above */}
       <Tabs
-        value={value}
+        value={props.value}
         onChange={handleChange}
         className={classes.tabContainer}
         // indicatorColor="primary" if you want to change the indicator color
@@ -379,12 +384,12 @@ const Header = (props) => {
             classes={{ root: classes.memuItem }}
             onClick={(event) => {
               handleMenuItemClick(event, i);
-              setValue(1);
+              props.setValue(1);
               handleClose();
             }}
             //applid selected style when index === selectedIndex
             // value === 1 means is when Services is selected
-            selected={i === selectedIndex && value === 1}
+            selected={i === props.selectedIndex && props.value === 1}
           >
             {option.name}
           </MenuItem>
@@ -465,11 +470,11 @@ const Header = (props) => {
               button
               component={Link}
               to={route.link}
-              selected={value === route.activeIndex}
+              selected={props.value === route.activeIndex}
               classes={{ selected: classes.drawerItemSelected }}
               onClick={() => {
                 setOpenDrawer(false);
-                setValue(route.activeIndex);
+                props.setValue(route.activeIndex);
               }}
             >
               <ListItemText
@@ -605,7 +610,7 @@ const Header = (props) => {
           <ListItem
             onClick={() => {
               setOpenDrawer(false);
-              setValue(5);
+              props.setValue(5);
             }}
             divider
             button
@@ -616,7 +621,7 @@ const Header = (props) => {
               root: classes.drawerItemEstimate,
               selected: classes.drawerItemSeletected,
             }}
-            selected={value === 5}
+            selected={props.value === 5}
           >
             <ListItemText
               className={classes.drawerItem}
@@ -653,7 +658,7 @@ const Header = (props) => {
               component={Link}
               to="/"
               className={classes.logoContainer}
-              onClick={() => setValue(0)} //change indicator to Home
+              onClick={() => props.setValue(0)} //change indicator to Home
               disableRipple //disable default repple effect (if you want, you can leave it as default)
             >
               <img src={logo} alt="company logo" className={classes.logo} />
