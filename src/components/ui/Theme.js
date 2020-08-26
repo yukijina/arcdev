@@ -1,5 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
+//** This theme is available anywhere - common styles(theme) */
+
 // Assign color to the variable so that we can use it in func below. (`${variable}`)
 //Easy to change later.
 const arcBlue = '#0B72B9';
@@ -35,6 +37,13 @@ export default createMuiTheme({
       fontSize: '1rem',
       textTransform: 'none',
       color: 'white',
+    },
+    h2: {
+      fontFamily: 'Raleway',
+      fontWeight: 700,
+      fontSize: '2.5rem',
+      color: `${arcBlue}`,
+      lineHight: 1.5,
     },
   },
 });
