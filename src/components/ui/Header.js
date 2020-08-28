@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) =>
       marginLeft: '50px',
       marginRight: '25px',
       height: '45px',
-      '$:hover': {
+      '&:hover': {
         backgroundColor: theme.palette.secondary.light,
       },
     },
@@ -143,7 +143,7 @@ const Header = (props) => {
   // customersize style
   const classes = useStyles();
 
-  // them and matches are for media query
+  // theme and matches are for media query
   const theme = useTheme();
   //small size or below - in the lecture, it was md (medium) but due to my screen size, I have changed it to sm
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -305,7 +305,7 @@ const Header = (props) => {
           break;
       }
     });
-  }, [props.value.menuOptions, props.selectedIndex, routes, props]); // useEffect is depending on 'value' whenever value changes, it triggers
+  }, [props.value, menuOptions, props.selectedIndex, routes, props]); // useEffect is depending on 'value' whenever value changes, it triggers
 
   const tabs = (
     <>
