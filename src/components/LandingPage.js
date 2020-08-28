@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import ButtonArrow from './ui/ButtonArrow';
 import animationData from '../animations/landinganimation/data';
@@ -44,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '0.7rem',
     height: 35,
     padding: 5,
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: '2em',
+    },
   },
   mainContainer: {
     marginTop: '5em',
@@ -69,12 +73,25 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     marginBotton: '1em',
   },
+  serviceContainer: {
+    marginTop: '12em',
+    [theme.breakpoints.down('sm')]: {
+      padding: 25,
+    },
+  },
+  icon: {
+    marginLeft: '2em',
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: 0,
+    },
+  },
 }));
 
 export default function LandingPage() {
   const classes = useStyles();
   // This makes theme available in the retun below (ButtonArrow). If it is not necessary, you can skip const theme here
   const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   // It is from react-lottie
   //https://github.com/chenqingspring/react-lottie
@@ -134,8 +151,19 @@ export default function LandingPage() {
       {/* column - 2 */}
       <Grid item>
         {/*---- Services Block ---- */}
-        <Grid container direction="row">
-          <Grid item>
+        <Grid
+          container
+          direction="row"
+          className={classes.serviceContainer}
+          justify={matchesSM ? 'center' : undefined}
+        >
+          <Grid
+            item
+            style={{
+              marginLeft: matchesSM ? 0 : '5em',
+              textAlign: matchesSM ? 'center' : undefined,
+            }}
+          >
             <Typography variant="h4">Custom Software Development</Typography>
             <Typography variant="subtitle1" className={classes.subtitle}>
               Save Energy. Save Time. Save Money.
@@ -154,7 +182,11 @@ export default function LandingPage() {
             </Button>
           </Grid>
           <Grid item>
-            <img alt="custom software icon" src={customSoftwareIcon} />
+            <img
+              alt="custom software icon"
+              src={customSoftwareIcon}
+              className={classes.icon}
+            />
           </Grid>
         </Grid>
       </Grid>
