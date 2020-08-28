@@ -113,9 +113,9 @@ export default function Footer(props) {
                   props.setSelectedIndex(2);
                 }}
                 component={Link}
-                to="/movileapps"
+                to="/movbileapps"
               >
-                Mobile App Development
+                iOS/Android App Development
               </Grid>
               <Grid
                 item
@@ -127,7 +127,7 @@ export default function Footer(props) {
                 component={Link}
                 to="/website"
               >
-                Website Develipment
+                Website Development
               </Grid>
             </Grid>
           </Grid>
