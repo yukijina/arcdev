@@ -1,5 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
+import { Link } from 'react-router-dom';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -7,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CallToAction from './ui/CallToAction';
 
 import ButtonArrow from './ui/ButtonArrow';
 import animationData from '../animations/landinganimation/data';
@@ -125,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LandingPage() {
+export default function LandingPage(props) {
   const classes = useStyles();
   // This makes theme available in the retun below (ButtonArrow). If it is not necessary, you can skip const theme here
   const theme = useTheme();
@@ -164,12 +166,24 @@ export default function LandingPage() {
               className={classes.buttonContainer}
             >
               <Grid item>
-                <Button className={classes.estimateButton} variant="contained">
+                <Button
+                  component={Link}
+                  to="/estimate"
+                  className={classes.estimateButton}
+                  variant="contained"
+                  onClick={() => props.setValue(5)}
+                >
                   Free Estimate
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" className={classes.learnButtonHero}>
+                <Button
+                  component={Link}
+                  to="/revolution"
+                  variant="outlined"
+                  className={classes.learnButtonHero}
+                  onClick={() => props.setValue(2)}
+                >
                   {/* margin right space til arrow */}
                   <span style={{ marginRight: 10 }}>Learn More</span>
                   <ButtonArrow
@@ -211,7 +225,16 @@ export default function LandingPage() {
               Complete digital solutions, from investigation to{' '}
               <span className={classes.specialText}>celebration</span>
             </Typography>
-            <Button variant="outlined" class={classes.learnButton}>
+            <Button
+              component={Link}
+              to="/customsoftware"
+              variant="outlined"
+              className={classes.learnButton}
+              onClick={() => {
+                props.setValue(1);
+                props.setSelectedIndex(1);
+              }}
+            >
               <span style={{ marginRight: 10 }}>Learn More</span>
               <ButtonArrow
                 width={10}
@@ -253,8 +276,23 @@ export default function LandingPage() {
                 {matchesSM ? null : <br />}
                 with either mobile platform.
               </Typography>
-              <Button variant="outlined" class={classes.learnButton}>
-                <span style={{ marginRight: 10 }}>Learn More</span>
+              <Button
+                component={Link}
+                to="/mobileapps"
+                variant="outlined"
+                className={classes.learnButton}
+                onClick={() => {
+                  props.setValue(1);
+                  props.setSelectedIndex(2);
+                }}
+              >
+                <span
+                  component={Link}
+                  to="/mobileapps"
+                  style={{ marginRight: 10 }}
+                >
+                  Learn More
+                </span>
                 <ButtonArrow
                   width={10}
                   height={10}
@@ -296,7 +334,16 @@ export default function LandingPage() {
                 {matchesSM ? null : <br />}
                 with either mobile platform.
               </Typography>
-              <Button variant="outlined" class={classes.learnButton}>
+              <Button
+                component={Link}
+                to="/websites"
+                variant="outlined"
+                className={classes.learnButton}
+                onClick={() => {
+                  props.setValue(1);
+                  props.setSelectedIndex(3);
+                }}
+              >
                 <span style={{ marginRight: 10 }}>Learn More</span>
                 <ButtonArrow
                   width={10}
@@ -316,7 +363,7 @@ export default function LandingPage() {
         </Grid>
       </Grid>
       {/* column - 5 */}
-      {/* Card section */}
+      {/* Card section Revolution*/}
       <Grid item>
         <Grid
           container
@@ -335,13 +382,18 @@ export default function LandingPage() {
                   <Typography variant="h3" gutterBottom>
                     The Revolution
                   </Typography>
-                  <Typography variant="subtitle">
+                  <Typography variant="subtitle1">
                     Visionary insights coupled with cutting-edge technology is a
                     recipe for revolution.
                   </Typography>
                   <Button
+                    component={Link}
+                    to="/revolution"
                     variant="outlined"
                     className={classes.learnButtonHero}
+                    onClick={() => {
+                      props.setValue(2);
+                    }}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
                     <ButtonArrow
@@ -357,22 +409,21 @@ export default function LandingPage() {
           <div className={classes.revolutionBackground} />
         </Grid>
       </Grid>
-      {/* column - 6  Revolution*/}
+      {/* column - 6 Information*/}
       <Grid
         container
         direction="row"
         alignItems="center"
         style={{ height: '80em' }}
+        className={classes.infoBackground}
       >
         <Grid
           item
           container
           style={{
-            position: 'absolute',
             textAlign: matchesXS ? 'center' : 'inherit',
           }}
           direction={matchesXS ? 'column' : 'row'}
-          spacing={matchesXS ? 10 : 0}
         >
           {/* 1-1 */}
           <Grid
@@ -380,20 +431,29 @@ export default function LandingPage() {
             sm
             style={{ marginLeft: matchesXS ? 0 : matchesSM ? '2em' : '5em' }}
           >
-            <Grid container direction="column">
+            <Grid
+              container
+              direction="column"
+              style={{ marginBottom: matchesXS ? '10em' : 0 }}
+            >
               <Typography variant="h2" style={{ color: 'white' }}>
                 About Us
               </Typography>
               <Typography variant="subtitle2">Let's get personal.</Typography>
               <Grid item>
                 <Button
+                  component={Link}
+                  to="/about"
                   variant="outlined"
                   style={{
                     color: 'white',
                     borderColor: 'white',
                     backgroundColor: 'transparent',
                   }}
-                  class={classes.learnButton}
+                  className={classes.learnButton}
+                  onClick={() => {
+                    props.setValue(3);
+                  }}
                 >
                   <span style={{ marginRight: 10 }}>Learn More</span>
                   <ButtonArrow width={10} height={10} fill="white" />
@@ -422,13 +482,18 @@ export default function LandingPage() {
               </Typography>
               <Grid item>
                 <Button
+                  component={Link}
+                  to="/contact"
                   variant="outlined"
                   style={{
                     color: 'white',
                     borderColor: 'white',
                     backgroundColor: 'transparent',
                   }}
-                  class={classes.learnButton}
+                  className={classes.learnButton}
+                  onClick={() => {
+                    props.setValue(4);
+                  }}
                 >
                   <span style={{ marginRight: 10 }}>Learn More</span>
                   <ButtonArrow width={10} height={10} fill="white" />
@@ -437,7 +502,10 @@ export default function LandingPage() {
             </Grid>
           </Grid>
         </Grid>
-        <div className={classes.infoBackground} />
+      </Grid>
+      {/* Call to action */}
+      <Grid item>
+        <CallToAction setValue={props.setValue} />
       </Grid>
     </Grid>
   );
