@@ -67,6 +67,11 @@ export default createMuiTheme({
       fontWeight: 300,
       color: 'white',
     },
+    body1: {
+      fontSize: '1.25rem',
+      color: arcGrey,
+      fontWeight: 300,
+    },
     learnButton: {
       borderColor: arcBlue,
       borderWidth: 2,
@@ -75,6 +80,30 @@ export default createMuiTheme({
       borderRadius: 50,
       fontFamily: 'Roboto',
       fontWeight: 'bold',
+    },
+  },
+  // oerrides material-ui default - here we overrides input filed default
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        color: arcBlue,
+        fontSize: '1rem',
+      },
+    },
+    MuiInput: {
+      root: {
+        color: arcGrey,
+        fontWeight: 3,
+      },
+      underline: {
+        // before state(before input something)
+        '&:before': {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+        '&:hover:not($focused):not($error):before': {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+      },
     },
   },
 });

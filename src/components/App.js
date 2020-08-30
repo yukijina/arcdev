@@ -5,6 +5,7 @@ import theme from './ui/Theme';
 import Header from './ui/Header';
 import Footer from './ui/Footer';
 import LandingPage from './LandingPage';
+import Contact from './ui/Contact';
 
 function App() {
   //Both header and footer can share these
@@ -50,7 +51,17 @@ function App() {
             component={() => <div>Revolution</div>}
           />
           <Route exact path="/about" component={() => <div>About</div>} />
-          <Route exact path="/contact" component={() => <div>Contact</div>} />
+          <Route
+            exact
+            path="/contact"
+            render={(props) => (
+              <Contact
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
           <Route exact path="/estimate" component={() => <div>Estimate</div>} />
         </Switch>
         <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ButtonArrow from './ButtonArrow';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import background from '../../assets/background.jpg';
 import mobileBackground from '../../assets/mobileBackground.jpg';
