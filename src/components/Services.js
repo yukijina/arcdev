@@ -18,8 +18,9 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     marginBotton: '1em',
   },
+  //ServiceContainer is for every columns(3). If you want to customeize each container style, use inlineStyle in each container (ex. style={{ marginTop '5em'}}
   serviceContainer: {
-    marginTop: '12em',
+    marginTop: '10em',
     [theme.breakpoints.down('sm')]: {
       padding: 25,
     },
@@ -41,6 +42,19 @@ const Services = (props) => {
 
   return (
     <Grid container direction="column">
+      <Grid item>
+        <Typography
+          variant="h2"
+          gutterBottom
+          align={matchesSM ? 'center' : undefined}
+          style={{
+            marginLeft: matchesSM ? 0 : '5em',
+            marginTop: matchesSM ? '1em' : '2em',
+          }}
+        >
+          Services
+        </Typography>
+      </Grid>
       {/* column - 1 */}
       <Grid item>
         {/* service 1/3 - iOS/Android App*/}
@@ -49,11 +63,13 @@ const Services = (props) => {
           direction="row"
           className={classes.serviceContainer}
           justify={matchesSM ? 'center' : 'flex-end'} // push container to right
+          style={{ marginTop: matchesSM ? '1em' : '5em' }} //overwrite serviceContainer marginTop
         >
           <Grid
             item
             style={{
               textAlign: matchesSM ? 'center' : undefined,
+              width: matchesSM ? undefined : '35em',
             }}
           >
             <Typography variant="h4">iOS/Android App Development</Typography>
@@ -94,6 +110,7 @@ const Services = (props) => {
               alt="mobile phone icon"
               src={mobileAppsIcon}
               className={classes.icon}
+              width="250em"
             />
           </Grid>
         </Grid>
@@ -112,6 +129,7 @@ const Services = (props) => {
             style={{
               marginLeft: matchesSM ? 0 : '5em',
               textAlign: matchesSM ? 'center' : undefined,
+              width: matchesSM ? undefined : '35em',
             }}
           >
             <Typography variant="h4">Custom Software Development</Typography>
@@ -156,11 +174,13 @@ const Services = (props) => {
             direction="row"
             className={classes.serviceContainer}
             justify={matchesSM ? 'center' : 'flex-end'}
+            style={{ marginBottom: '10em' }}
           >
             <Grid
               item
               style={{
                 textAlign: matchesSM ? 'center' : undefined,
+                width: matchesSM ? undefined : '35em',
               }}
             >
               <Typography variant="h4">Website Development</Typography>
@@ -195,6 +215,7 @@ const Services = (props) => {
                 alt="website icon"
                 src={websitesIcon}
                 className={classes.icon}
+                width="250em"
               />
             </Grid>
           </Grid>
