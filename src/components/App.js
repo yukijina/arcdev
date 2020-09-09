@@ -7,6 +7,7 @@ import Footer from './ui/Footer';
 import LandingPage from './LandingPage';
 import Services from './Services';
 import Contact from './ui/Contact';
+import CustomSoftware from './ui/CustomSoftware';
 
 function App() {
   //Both header and footer can share these
@@ -48,7 +49,13 @@ function App() {
           <Route
             exact
             path="/customsoftware"
-            component={() => <div>Custom Software</div>}
+            render={(props) => (
+              <CustomSoftware
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
           />
           <Route
             exact
