@@ -12,8 +12,12 @@ import forwardArrow from '../../assets/forwardArrow.svg';
 import lightbulb from '../../assets/bulb.svg';
 import cash from '../../assets/cash.svg';
 import stopwatch from '../../assets/stopwatch.svg';
+import roots from '../../assets/root.svg';
+
 import documentsAnimation from '../../animations/documentsAnimation/data';
 import scaleAnimation from '../../animations/scaleAnimation/data.json';
+import automationAnimation from '../../animations/automationAnimation/data.json';
+import uxAnimation from '../../animations/uxAnimation/data';
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -51,6 +55,24 @@ export default function CustomSoftware(props) {
     loop: true,
     autoplay: false, //stop animation autoplay for testing - turn true if you want to see animation
     animationData: scaleAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
+  const automationOptions = {
+    loop: true,
+    autoplay: false, //stop animation autoplay for testing - turn true if you want to see animation
+    animationData: automationAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
+  const uxOptions = {
+    loop: true,
+    autoplay: false, //stop animation autoplay for testing - turn true if you want to see animation
+    animationData: uxAnimation,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
@@ -177,10 +199,16 @@ export default function CustomSoftware(props) {
       <Grid
         item
         container
-        justify="space-between"
+        justify="space-around"
         className={classes.rowContainer}
       >
-        <Grid item container direction="row" className={classes.itemContainer}>
+        <Grid
+          item
+          container
+          direction="row"
+          className={classes.itemContainer}
+          md // container stayes each pther until medium
+        >
           <Grid item container direction="column">
             <Grid item>
               <Typography variant="h4">Digital Documents & Data</Typography>
@@ -211,7 +239,13 @@ export default function CustomSoftware(props) {
           </Grid>
         </Grid>
 
-        <Grid item container direction="row" className={classes.itemContainer}>
+        <Grid
+          item
+          container
+          direction="row"
+          className={classes.itemContainer}
+          md
+        >
           <Grid item md>
             <Lottie
               options={scaleOptions}
@@ -230,6 +264,114 @@ export default function CustomSoftware(props) {
                 Whether you're a large brand, just getting started, or talomg
                 pff rogjt now, our apliation architecture ensures pain free
                 growth and reliability.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <Grid
+        item
+        container
+        direction="row"
+        style={{ marginTop: '20em', marginBottom: '20em' }}
+      >
+        <Grid item container direction="column" alignItems="center">
+          <img
+            src={roots}
+            alt="tree with roots extending out"
+            height="450em"
+            width="450em"
+          />
+        </Grid>
+        <Grid item className={classes.itemContainer}>
+          <Typography variant="h4" align="center" gutterBottom>
+            Root-Cause Analysis
+          </Typography>
+          <Typography variant="body1" align="center" paragraph>
+            Many problems are merely symptoms of larger, underlying issues.
+          </Typography>
+          <Typography variant="body1" align="center" paragraph>
+            We can help you throughly examine all areas of your business to
+            develop a holistic plan for the most effective implementation of
+            technology.
+          </Typography>
+        </Grid>
+      </Grid>
+
+      <Grid
+        item
+        container
+        justify="space-around"
+        className={classes.rowContainer}
+      >
+        <Grid
+          item
+          container
+          direction="row"
+          className={classes.itemContainer}
+          md // container stayes each pther until medium
+        >
+          <Grid item container direction="column">
+            <Grid item>
+              <Typography variant="h4">Automation</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body1" paragraph>
+                Why waste time when you don't have to?
+              </Typography>
+              <Typography variant="body1" paragraph>
+                We can help you identify processes with time or event based
+                actions which can now easily be automated.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Increasing efficiency increases profits, leaving you more time
+                to focus on your business, not busywork.
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Grid item md>
+            <Lottie
+              options={automationOptions}
+              isStopped={true} // if you want to auto animation, get rid of this
+              style={{ maxHeight: 290, maxWidth: 280 }}
+            />
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          container
+          direction="row"
+          className={classes.itemContainer}
+          md
+        >
+          <Grid item md>
+            <Lottie
+              options={uxOptions}
+              style={{ maxHeight: 310, maxWidth: 155 }}
+            />
+          </Grid>
+          <Grid item container direction="column">
+            <Grid item>
+              <Typography variant="h4" align="right">
+                User Experience Desgin
+              </Typography>
+            </Grid>
+
+            <Grid item>
+              <Typography variant="body1" align="right" paragraph>
+                A good design that isn't usable isn't a good design
+              </Typography>
+              <Typography variant="body1" align="right" paragraph>
+                So why are so mamy pieces of software complicated, confusing,
+                and frustraiting?
+              </Typography>
+              <Typography variant="body1" align="right" paragraph>
+                By prioritizing users and the real ways they interact with
+                technology we're able to develop unique, personabe experiences
+                that solve problems rather than create new ones.
               </Typography>
             </Grid>
           </Grid>
