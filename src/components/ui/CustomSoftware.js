@@ -6,6 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 
 import backArrow from '../../assets/backArrow.svg';
 import forwardArrow from '../../assets/forwardArrow.svg';
@@ -20,11 +21,9 @@ import automationAnimation from '../../animations/automationAnimation/data.json'
 import uxAnimation from '../../animations/uxAnimation/data';
 
 const useStyles = makeStyles((theme) => ({
-  mainContainer: {
+  rowContainer: {
     paddingLeft: '5em',
     paddingRight: '5em',
-    paddingTop: '2em',
-    paddingBottom: '10em',
   },
   heading: {
     maxWidth: '40em',
@@ -39,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomSoftware(props) {
   const classes = useStyles();
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   // It is from react-lottie
   //https://github.com/chenqingspring/react-lottie
@@ -79,66 +81,94 @@ export default function CustomSoftware(props) {
   };
 
   return (
-    <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item container direction="row">
-        <Grid
-          item
-          className={classes.arrowContainer}
-          style={{ marginRight: '1em', marginleft: '-3.5em' }}
-        >
-          <IconButton
-            style={{ backgroundColor: 'transparent' }}
-            component={Link}
-            to="/services"
-            onClick={() => props.setSelectedIndex(0)}
+    <Grid container direction="column">
+      <Grid
+        item
+        container
+        direction="row"
+        className={classes.rowContainer}
+        justify={matchesMD ? 'center' : undefined}
+      >
+        <Hidden mdDown>
+          <Grid
+            item
+            className={classes.arrowContainer}
+            style={{ marginRight: '1em', marginleft: '-3.5em' }}
           >
-            <img src={backArrow} alt="Back to Service Page" />
-          </IconButton>
-        </Grid>
+            <IconButton
+              style={{ backgroundColor: 'transparent' }}
+              component={Link}
+              to="/services"
+              onClick={() => props.setSelectedIndex(0)}
+            >
+              <img src={backArrow} alt="Back to Service Page" />
+            </IconButton>
+          </Grid>
+        </Hidden>
 
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography variant="h2">Custom Software Development</Typography>
+            <Typography variant="h2" align={matchesMD ? 'center' : undefined}>
+              Custom Software Development
+            </Typography>
           </Grid>
 
           <Grid item>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              paragraph
+              align={matchesMD ? 'center' : undefined}
+            >
               Whether we're replacing old software or invention new solutions,
               Arc Development is here to help your business tackle technology.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              paragraph
+              align={matchesMD ? 'center' : undefined}
+            >
               using regular commercial software leaves you with a lot of stuff
               you don't need, without some of the stuff you do need, and
               ultimately controles the way you work. Without using any software
               at all you risk falling behind competitors and missing out on huge
               savings from increased efficiency.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              paragraph
+              align={matchesMD ? 'center' : undefined}
+            >
               Our custom solutions are designed from the ground up with you
               needs, wants, and goals at the core. This collaborative process
               produces finely tuned software that is much more effective at
               improveing your workflow and reducing costs that generalized
               options.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              paragraph
+              align={matchesMD ? 'center' : undefined}
+            >
               We create exacty what you want, exactrly how you want it.
             </Typography>
           </Grid>
         </Grid>
 
-        <Grid item className={classes.arrowContainer}>
-          <IconButton
-            tyle={{ backgroundColor: 'transparent' }}
-            component={Link}
-            to="/mobileapps"
-            onClick={() => props.setSelectedIndex(2)}
-          >
-            <img
-              src={forwardArrow}
-              alt="Forward to iO/Android App Development page"
-            />
-          </IconButton>
-        </Grid>
+        <Hidden mdDown>
+          <Grid item className={classes.arrowContainer}>
+            <IconButton
+              tyle={{ backgroundColor: 'transparent' }}
+              component={Link}
+              to="/mobileapps"
+              onClick={() => props.setSelectedIndex(2)}
+            >
+              <img
+                src={forwardArrow}
+                alt="Forward to iO/Android App Development page"
+              />
+            </IconButton>
+          </Grid>
+        </Hidden>
       </Grid>
 
       <Grid
@@ -147,6 +177,7 @@ export default function CustomSoftware(props) {
         direction="row"
         justify="center"
         style={{ marginTop: '15em', marginBottom: '20em' }}
+        className={classes.rowContainer}
       >
         <Grid
           item
@@ -170,7 +201,11 @@ export default function CustomSoftware(props) {
           direction="column"
           alignItems="center"
           md
-          style={{ maxWidth: '40em' }}
+          style={{
+            maxWidth: '40em',
+            marginTop: matchesSM ? '10em' : 0,
+            marginBottom: matchesSM ? '10em' : 0,
+          }}
         >
           <Grid item>
             <Typography variant="h4">Save Cash</Typography>
@@ -201,12 +236,15 @@ export default function CustomSoftware(props) {
         container
         justify="space-around"
         className={classes.rowContainer}
+        direction={matchesMD ? 'column' : 'row'}
+        alignItems={matchesMD ? 'center' : undefined}
       >
         <Grid
           item
           container
           direction="row"
           className={classes.itemContainer}
+          style={{ marginBottom: matchesMD ? '15em' : 0 }}
           md // container stayes each pther until medium
         >
           <Grid item container direction="column">
@@ -252,7 +290,7 @@ export default function CustomSoftware(props) {
               style={{ maxHeight: 260, maxWidth: 280 }}
             />
           </Grid>
-          <Grid item container direction="column">
+          <Grid item container direction="column" md>
             <Grid item>
               <Typography variant="h4" align="right">
                 Scale
@@ -275,44 +313,51 @@ export default function CustomSoftware(props) {
         container
         direction="row"
         style={{ marginTop: '20em', marginBottom: '20em' }}
+        className={classes.rowContainer}
       >
         <Grid item container direction="column" alignItems="center">
-          <img
-            src={roots}
-            alt="tree with roots extending out"
-            height="450em"
-            width="450em"
-          />
-        </Grid>
-        <Grid item className={classes.itemContainer}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Root-Cause Analysis
-          </Typography>
-          <Typography variant="body1" align="center" paragraph>
-            Many problems are merely symptoms of larger, underlying issues.
-          </Typography>
-          <Typography variant="body1" align="center" paragraph>
-            We can help you throughly examine all areas of your business to
-            develop a holistic plan for the most effective implementation of
-            technology.
-          </Typography>
+          <Grid item>
+            <img
+              src={roots}
+              alt="tree with roots extending out"
+              height="450em"
+              width="450em"
+            />
+          </Grid>
+
+          <Grid item className={classes.itemContainer}>
+            <Typography variant="h4" align="center" gutterBottom>
+              Root-Cause Analysis
+            </Typography>
+            <Typography variant="body1" align="center" paragraph>
+              Many problems are merely symptoms of larger, underlying issues.
+            </Typography>
+            <Typography variant="body1" align="center" paragraph>
+              We can help you throughly examine all areas of your business to
+              develop a holistic plan for the most effective implementation of
+              technology.
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
 
       <Grid
         item
         container
-        justify="space-around"
+        justify="space-between"
         className={classes.rowContainer}
+        style={{ marginBottom: '20rem' }}
       >
         <Grid
           item
           container
-          direction="row"
+          direction={matchesMD ? 'column' : 'row'}
+          alignItems={matchesMD ? 'center' : undefined}
           className={classes.itemContainer}
+          style={{ marginBottom: matchesMD ? '15em' : 0 }}
           md // container stayes each pther until medium
         >
-          <Grid item container direction="column">
+          <Grid item container direction="column" md>
             <Grid item>
               <Typography variant="h4">Automation</Typography>
             </Grid>
@@ -353,7 +398,7 @@ export default function CustomSoftware(props) {
               style={{ maxHeight: 310, maxWidth: 155 }}
             />
           </Grid>
-          <Grid item container direction="column">
+          <Grid item container direction="column" md>
             <Grid item>
               <Typography variant="h4" align="right">
                 User Experience Desgin
