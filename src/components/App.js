@@ -6,8 +6,9 @@ import Header from './ui/Header';
 import Footer from './ui/Footer';
 import LandingPage from './LandingPage';
 import Services from './Services';
-import Contact from './ui/Contact';
-import CustomSoftware from './ui/CustomSoftware';
+import Contact from './Contact';
+import CustomSoftware from './CustomSoftware';
+import MobileApps from './MobileApps';
 
 function App() {
   //Both header and footer can share these
@@ -60,7 +61,13 @@ function App() {
           <Route
             exact
             path="/mobileapps"
-            component={() => <div>MobileApp</div>}
+            render={(props) => (
+              <MobileApps
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
           />
           <Route exact path="/websites" component={() => <div>Websites</div>} />
           <Route
