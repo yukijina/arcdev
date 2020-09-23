@@ -20,10 +20,17 @@ import scaleAnimation from '../../animations/scaleAnimation/data.json';
 import automationAnimation from '../../animations/automationAnimation/data.json';
 import uxAnimation from '../../animations/uxAnimation/data';
 
+import CallToAction from './CallToAction';
+
 const useStyles = makeStyles((theme) => ({
   rowContainer: {
     paddingLeft: '5em',
     paddingRight: '5em',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '1.5em',
+      paddingRight: '1.5em',
+      paddingTop: '1em',
+    },
   },
   heading: {
     maxWidth: '40em',
@@ -41,6 +48,7 @@ export default function CustomSoftware(props) {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
   // It is from react-lottie
   //https://github.com/chenqingspring/react-lottie
@@ -88,6 +96,7 @@ export default function CustomSoftware(props) {
         direction="row"
         className={classes.rowContainer}
         justify={matchesMD ? 'center' : undefined}
+        style={{ marginTop: matchesXS ? '1em' : '2em' }}
       >
         <Hidden mdDown>
           <Grid
@@ -175,7 +184,7 @@ export default function CustomSoftware(props) {
         item
         container
         direction="row"
-        justify="center"
+        justify={matchesMD ? 'center' : undefined}
         style={{ marginTop: '15em', marginBottom: '20em' }}
         className={classes.rowContainer}
       >
@@ -242,25 +251,39 @@ export default function CustomSoftware(props) {
         <Grid
           item
           container
-          direction="row"
+          direction={matchesSM ? 'column' : 'row'}
           className={classes.itemContainer}
           style={{ marginBottom: matchesMD ? '15em' : 0 }}
           md // container stayes each pther until medium
         >
           <Grid item container direction="column">
             <Grid item>
-              <Typography variant="h4">Digital Documents & Data</Typography>
+              <Typography variant="h4" align={matchesSM ? 'center' : undefined}>
+                Digital Documents & Data
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1" paragraph>
+              <Typography
+                variant="body1"
+                paragraph
+                align={matchesSM ? 'center' : undefined}
+              >
                 Redcuce Errors.Reduce Waste.Redyce Costs.
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography
+                variant="body1"
+                paragraph
+                align={matchesSM ? 'center' : undefined}
+              >
                 Billions are spent annually on the purchasing, printing, and
                 distribution of paper.On top of the massive environmental impact
                 this has, it causes harm to your bottom line as well.
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography
+                variant="body1"
+                paragraph
+                align={matchesSM ? 'center' : undefined}
+              >
                 By utilizing digital forms and documents you can remove these
                 obsolete expensesm accelerate your communication, and help the
                 Earth.
@@ -280,7 +303,7 @@ export default function CustomSoftware(props) {
         <Grid
           item
           container
-          direction="row"
+          direction={matchesSM ? 'column' : 'row'}
           className={classes.itemContainer}
           md
         >
@@ -292,13 +315,17 @@ export default function CustomSoftware(props) {
           </Grid>
           <Grid item container direction="column" md>
             <Grid item>
-              <Typography variant="h4" align="right">
+              <Typography variant="h4" align={matchesSM ? 'center' : 'right'}>
                 Scale
               </Typography>
             </Grid>
 
             <Grid item>
-              <Typography variant="body1" align="right" paragraph>
+              <Typography
+                variant="body1"
+                align={matchesSM ? 'center' : 'right'}
+                paragraph
+              >
                 Whether you're a large brand, just getting started, or talomg
                 pff rogjt now, our apliation architecture ensures pain free
                 growth and reliability.
@@ -311,7 +338,7 @@ export default function CustomSoftware(props) {
       <Grid
         item
         container
-        direction="row"
+        direction={matchesSM ? 'column' : 'row'}
         style={{ marginTop: '20em', marginBottom: '20em' }}
         className={classes.rowContainer}
       >
@@ -320,8 +347,8 @@ export default function CustomSoftware(props) {
             <img
               src={roots}
               alt="tree with roots extending out"
-              height="450em"
-              width="450em"
+              height={matchesSM ? '300em' : '450em'}
+              width={matchesSM ? '300em' : '450em'}
             />
           </Grid>
 
@@ -345,6 +372,8 @@ export default function CustomSoftware(props) {
         item
         container
         justify="space-between"
+        alignItems={matchesMD ? 'center' : undefined}
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ marginBottom: '20rem' }}
       >
@@ -352,24 +381,37 @@ export default function CustomSoftware(props) {
           item
           container
           direction={matchesMD ? 'column' : 'row'}
-          alignItems={matchesMD ? 'center' : undefined}
           className={classes.itemContainer}
           style={{ marginBottom: matchesMD ? '15em' : 0 }}
           md // container stayes each pther until medium
         >
           <Grid item container direction="column" md>
             <Grid item>
-              <Typography variant="h4">Automation</Typography>
+              <Typography variant="h4" align={matchesSM ? 'center' : undefined}>
+                Automation
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1" paragraph>
+              <Typography
+                variant="body1"
+                paragraph
+                align={matchesSM ? 'center' : undefined}
+              >
                 Why waste time when you don't have to?
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography
+                variant="body1"
+                paragraph
+                align={matchesSM ? 'center' : undefined}
+              >
                 We can help you identify processes with time or event based
                 actions which can now easily be automated.
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography
+                variant="body1"
+                paragraph
+                align={matchesSM ? 'center' : undefined}
+              >
                 Increasing efficiency increases profits, leaving you more time
                 to focus on your business, not busywork.
               </Typography>
@@ -388,7 +430,7 @@ export default function CustomSoftware(props) {
         <Grid
           item
           container
-          direction="row"
+          direction={matchesSM ? 'column' : 'row'}
           className={classes.itemContainer}
           md
         >
@@ -400,20 +442,32 @@ export default function CustomSoftware(props) {
           </Grid>
           <Grid item container direction="column" md>
             <Grid item>
-              <Typography variant="h4" align="right">
+              <Typography variant="h4" align={matchesSM ? 'center' : 'right'}>
                 User Experience Desgin
               </Typography>
             </Grid>
 
             <Grid item>
-              <Typography variant="body1" align="right" paragraph>
+              <Typography
+                variant="body1"
+                align={matchesSM ? 'center' : 'right'}
+                paragraph
+              >
                 A good design that isn't usable isn't a good design
               </Typography>
-              <Typography variant="body1" align="right" paragraph>
+              <Typography
+                variant="body1"
+                align={matchesSM ? 'center' : 'right'}
+                paragraph
+              >
                 So why are so mamy pieces of software complicated, confusing,
                 and frustraiting?
               </Typography>
-              <Typography variant="body1" align="right" paragraph>
+              <Typography
+                variant="body1"
+                align={matchesSM ? 'center' : 'right'}
+                paragraph
+              >
                 By prioritizing users and the real ways they interact with
                 technology we're able to develop unique, personabe experiences
                 that solve problems rather than create new ones.
@@ -421,6 +475,9 @@ export default function CustomSoftware(props) {
             </Grid>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item>
+        <CallToAction setValue={props.setValue} />
       </Grid>
     </Grid>
   );
