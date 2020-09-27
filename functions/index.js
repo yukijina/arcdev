@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
   from: 'Arc Development',
-  to: 'lunarbase@outlook.com',
+  to: 'someemail@test.com',
   subject: 'Testing nodemailer',
   text: 'Test successful',
 };
