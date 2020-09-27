@@ -11,6 +11,7 @@ import CustomSoftware from './CustomSoftware';
 import MobileApps from './MobileApps';
 import Websites from './Websites';
 import Revolution from './Revolution';
+import About from './About';
 
 function App() {
   //Both header and footer can share these
@@ -93,7 +94,17 @@ function App() {
               />
             )}
           />
-          <Route exact path="/about" component={() => <div>About</div>} />
+          <Route
+            exact
+            path="/about"
+            render={(props) => (
+              <About
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
           <Route
             exact
             path="/contact"
