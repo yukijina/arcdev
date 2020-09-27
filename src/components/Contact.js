@@ -143,7 +143,15 @@ export default function Contact(props) {
     // add get url from firebase - the below url is placeholder (does not work)
     axios
       .get(
-        'https://us-central1-material-ui-learning.cloudfunctions.net/sendMail'
+        'https://us-central1-material-ui-learning.cloudfunctions.net/sendMail',
+        {
+          params: {
+            name,
+            email,
+            phone,
+            message,
+          },
+        }
       )
       .then((res) => {
         setLoading(false);
