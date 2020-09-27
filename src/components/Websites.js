@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Lottie from 'react-lottie';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
@@ -172,7 +171,6 @@ export default function Websites(props) {
           <Grid container direction="column">
             <Grid item>
               <Typography
-                align="center"
                 variant="h4"
                 align={matchesSM ? 'center' : undefined}
                 gutterBottom
@@ -208,7 +206,6 @@ export default function Websites(props) {
           <Grid container direction="column">
             <Grid item>
               <Typography
-                align="center"
                 variant="h4"
                 align={matchesSM ? 'center' : undefined}
                 gutterBottom
@@ -244,7 +241,6 @@ export default function Websites(props) {
           <Grid container direction="column">
             <Grid item>
               <Typography
-                align="center"
                 variant="h4"
                 align={matchesSM ? 'center' : undefined}
                 gutterBottom

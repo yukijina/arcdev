@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
@@ -125,6 +126,18 @@ export default function Contact(props) {
         break;
     }
   };
+
+  // FYI - when you finish firebase setup
+  const onConfirm = () => {
+    // add get url from firebase - the below url is placeholder (does not work)
+    axios
+      .get(
+        'https://us-central1-material-ui-learning.cloudfunctions.net/sendMail'
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Grid container direction="row">
       <Grid
@@ -270,7 +283,7 @@ export default function Contact(props) {
                     // }
                     variant="contained"
                     className={classes.sendButton}
-                    onClick={() => setOpen(true)}
+                    onClick={onConfirm}
                   >
                     Send Message{' '}
                     <img

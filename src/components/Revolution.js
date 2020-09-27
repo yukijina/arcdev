@@ -46,7 +46,6 @@ export default function Revolution(props) {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
-  const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
   // It is from react-lottie
   //https://github.com/chenqingspring/react-lottie
@@ -793,7 +792,6 @@ export default function Revolution(props) {
             src={maintain}
             width="100%"
             alt="wrench tightening bolts"
-            width="100%"
             style={{ maxWidth: 500 }}
           />
         </Grid>

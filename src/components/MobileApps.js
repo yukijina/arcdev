@@ -200,7 +200,6 @@ export default function MobileApps(props) {
           </Grid>
           <Grid item>
             <Typography
-              align={matchesSM ? 'center' : undefined}
               variation="body1"
               align={matchesSM ? 'center' : 'right'}
               paragraph
