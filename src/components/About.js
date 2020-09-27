@@ -3,10 +3,13 @@ import Lottie from 'react-lottie';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Hidden from '@material-ui/core/Hidden';
+import Avatar from '@material-ui/core/Avatar';
+
 import history from '../assets/history.svg';
+import profile from '../assets/founder.jpg';
+import yearbook from '../assets/yearbook.svg';
+import puppy from '../assets/puppy.svg';
 
 const useStyles = makeStyles((theme) => ({
   rowContainer: {
@@ -24,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.5rem',
     maxWidth: '50em',
     lineHeight: 1.4,
+  },
+  avatar: {
+    width: '25em',
+    height: '25em',
   },
 }));
 
@@ -116,6 +123,79 @@ export default function About(props) {
               alt="quill pen sitting on top of book"
               style={{ maxHeight: '22em' }}
             />
+          </Grid>
+        </Grid>
+      </Grid>
+
+      {/* About Founder */}
+      <Grid
+        item
+        container
+        direction="column"
+        alignItems="center"
+        className={classes.rowContainer}
+      >
+        {/* colum 1 */}
+        <Grid item>
+          <Typography variant="h4" gutterBottom align="center">
+            Team
+          </Typography>
+        </Grid>
+
+        {/* colum 2 */}
+        <Grid item>
+          <Typography variant="body1" paragraph align="center">
+            Joe Doe, Founder
+          </Typography>
+          <Typography variant="body1" paragraph align="center">
+            I have started coding at the age of 9.
+          </Typography>
+        </Grid>
+
+        {/* colum 3 */}
+        <Grid item>
+          <Avatar alt="founder" src={profile} className={classes.avatar} />
+        </Grid>
+
+        {/* colum 4 - row 1 */}
+        <Grid item container>
+          <Grid item container direction="column" lg>
+            {/* nested colum 1 */}
+            <Grid item>
+              <img src={yearbook} alt="yearbook page about founder" />
+            </Grid>
+            {/* nested colum 2 */}
+            <Grid item>
+              <Typography variant="caption">
+                a page from my Sophmore yearbook
+              </Typography>
+            </Grid>
+          </Grid>
+
+          {/* row 2 */}
+          <Grid item lg style={{ maxWidth: '45em', padding: '1.25em' }}>
+            <Typography variant="body1" algin="center" paragraph>
+              I taught myself basic coding from a library bok in third grade,
+              and ever since then my passion has solely been set on learning -
+              learning about computers, learning mathmatics and philosophy,
+              studying design, always just learning.
+            </Typography>
+            <Typography variand="body1" align="center" paragraph>
+              Now I'm ready to appy everything I've learnedm and to help others
+              with the intuition I have developed.
+            </Typography>
+          </Grid>
+
+          {/* row 3 */}
+          <Grid item container direction="column" alignItems="flex-end" lg>
+            <Grid item>
+              <img src={puppy} alt="grey spotted puppy" />
+            </Grid>
+            <Grid item>
+              <Typography variant="caption">
+                my miniature dapple dachshund, Stering
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
