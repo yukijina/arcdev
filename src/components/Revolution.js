@@ -281,7 +281,7 @@ export default function Revolution(props) {
             <Typography
               variant="h4"
               align={matchesMD ? 'center' : undefined}
-              gutterButtom
+              gutterBottom
               style={{ color: '#000', marginTop: '5em' }}
             >
               Consultation
