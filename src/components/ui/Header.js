@@ -216,6 +216,7 @@ const Header = (props) => {
     { name: 'The Revolution', link: '/revolution', activeIndex: 2 },
     { name: 'About Us', link: '/about', activeIndex: 3 },
     { name: 'Contact Us', link: '/contact', activeIndex: 4 },
+    { name: 'Estimate', link: '/estimate', activeIndex: 5 },
   ];
 
   useEffect(() => {
