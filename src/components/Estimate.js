@@ -422,6 +422,35 @@ export default function Estimate(props) {
     setQuestions(newQuestions);
   };
 
+  const navigationPreviousDisabled = () => {
+    const currentlyActive = questions.filter((question) => question.active);
+
+    if (currentlyActive[0].id === 1) {
+      return true;
+    }
+  };
+
+  const navigationNextDisabled = () => {
+    const currentlyActive = questions.filter((question) => question.active);
+
+    if (currentlyActive[0].id === questions[questions.length - 1].id) {
+      return true;
+    }
+  };
+
+  const handleSelect = (id) => {
+    const newQuestions = cloneDeep(questions);
+    const currentlyActive = newQuestions.filter((question) => question.active);
+    const activeIndex = currentlyActive[0].id - 1;
+
+    // index is id - 1
+    const newSelected = newQuestions[activeIndex].options[id - 1];
+
+    newSelected.selected = !newSelected.selected;
+
+    setQuestions(newQuestions);
+  };
+
   return (
     <Grid container direction="row">
       <Grid item container direction="column" lg>
@@ -456,6 +485,7 @@ export default function Estimate(props) {
                     fontWeight: 500,
                     marginTop: '5em',
                     fontSize: '2.25em',
+                    lineHeight: 1.25,
                   }}
                 >
                   {question.title}
@@ -472,7 +502,22 @@ export default function Estimate(props) {
 
               <Grid item container>
                 {question.options.map((option) => (
-                  <Grid item container direction="column" md>
+                  <Grid
+                    item
+                    container
+                    direction="column"
+                    md
+                    component={Button}
+                    onClick={() => handleSelect(option.id)}
+                    style={{
+                      displlay: 'grid',
+                      textTransform: 'none',
+                      borderRadius: 0,
+                      backgroundColor: option.selected
+                        ? theme.palette.common.orange
+                        : null,
+                    }}
+                  >
                     <Grid item style={{ maxWidth: '12em' }}>
                       <Typography
                         variant="h6"
@@ -505,13 +550,29 @@ export default function Estimate(props) {
           style={{ width: '18em', marginTop: '3em' }}
         >
           <Grid item>
-            <IconButton onClick={previousQuestions}>
-              <img src={backArrow} alt="Previous question" />
+            <IconButton
+              disabled={navigationPreviousDisabled()}
+              onClick={previousQuestions}
+            >
+              <img
+                src={
+                  navigationPreviousDisabled() ? backArrowDisabled : backArrow
+                }
+                alt="Previous question"
+              />
             </IconButton>
           </Grid>
           <Grid item>
-            <IconButton onClick={nextQuestions}>
-              <img src={forwardArrow} alt="Next question" />
+            <IconButton
+              disabled={navigationNextDisabled()}
+              onClick={nextQuestions}
+            >
+              <img
+                src={
+                  navigationNextDisabled() ? forwardArrowDisabled : forwardArrow
+                }
+                alt="Next question"
+              />
             </IconButton>
           </Grid>
         </Grid>
