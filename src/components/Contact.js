@@ -344,7 +344,7 @@ export default function Contact(props) {
         // Dialog will display in front
         style={{ zIndex: 1302 }}
         // if matchesXS is true, it returns fullScreen
-        fullScreen={matchesXS}
+        fullScreen={matchesSM}
         open={open}
         onClose={() => setOpen(false)}
         PaperProps={{
