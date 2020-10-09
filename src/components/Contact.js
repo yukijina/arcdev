@@ -356,15 +356,15 @@ export default function Contact(props) {
               : matchesSM
               ? '5em'
               : matchesMD
-              ? '10em'
-              : '20em',
+              ? '15em'
+              : '25em',
             paddingRight: matchesXS
               ? 0
               : matchesSM
               ? '5em'
               : matchesMD
-              ? '10em'
-              : '20em',
+              ? '15em'
+              : '25em',
           },
         }}
       >
