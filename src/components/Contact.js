@@ -407,7 +407,7 @@ export default function Contact(props) {
                 onChange={onChange}
               />
             </Grid>
-            <Grid item style={{ maxWidth: matchesXS ? '100%' : '20em' }}>
+            <Grid item style={{ width: matchesSM ? '100%' : '20em' }}>
               <TextField
                 //check material-ui input api Props
                 InputProps={{ disableUnderline: true }}
